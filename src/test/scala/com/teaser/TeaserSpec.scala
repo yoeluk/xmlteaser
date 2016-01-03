@@ -18,12 +18,12 @@ class TeaserSpec {
 
     val animals =
       ("rabbit" ->> "Longears") ::
-        ("mouse" ->> "Mikey") ::
+        ("mouse" ->> "Mickey") ::
         ("pig" ->> "Oink") ::
         HNil
 
     val withoutRabbit =
-      ("mouse" ->> "Mikey") ::
+      ("mouse" ->> "Mickey") ::
         ("pig" ->> "Oink") ::
         HNil
 
