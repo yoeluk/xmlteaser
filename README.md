@@ -16,6 +16,8 @@ val xml =
       <duckcount>56</duckcount>
     </root>
 
+val rabbitWitness = Witness("rabbit")
+
 def selectRabbit[L <: HList](xs: L)(implicit sel: Selector[L, rabbitWitness.T]) = xs("rabbit")
 
 val maybeNoRabbitRec = xml.toRecord[Record.`"duckcount" -> Int, "allsome" -> String, "root" -> String, "emptyfield" -> String`.T]
@@ -31,3 +33,7 @@ maybeCombinedRec.map(selectRabbit(_)) // Some("Longears")
 xml.toRecord[Record.`"rabbit" -> Int, "duckcount" -> Int`.T] // None
 
 ```
+
+### Examples:
+
+See more examples in src/test/scala/com/teaser/TeaserSpec.scala file
