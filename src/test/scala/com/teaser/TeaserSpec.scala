@@ -225,11 +225,11 @@ class TeaserSpec {
     import syntax.typeable._
 
     def labelSelector[L <: HList](xs: L, labelWitness: Witness.Lt[String])(implicit sel: Selector[L, labelWitness.T]) =
-      xs(labelWitness).cast[NutritionalLabel]
+      xs(labelWitness)
 
     val maybeImagesRec = imgXml.toRecord[Record.`"images" -> NutritionalLabel`.T]
 
-    val nutritionalLabel = labelSelector(maybeImagesRec.get, Witness("images"))
+    val nutritionalLabel = labelSelector(maybeImagesRec.get, Witness("images")).cast[NutritionalLabel]
 
     assertTrue(maybeImagesRec.nonEmpty)
 
