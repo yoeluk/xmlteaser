@@ -51,7 +51,8 @@ package object xmlteaser {
       }
 
     implicit def hlistFromXml[S <: String, V, T <: HList]
-    (implicit wk: Witness.Aux[S], parser: Node ~:> V, fmt: RecFromXml[T]): RecFromXml[FieldType[S, V] :: T] =
+    (implicit wk: Witness.Aux[S], parser: Node ~:> V, fmt: RecFromXml[T])
+    : RecFromXml[FieldType[S, V] :: T] =
       new RecFromXml[FieldType[S, V] :: T] {
         def apply(n: Node): Option[FieldType[S, V] :: T] =
           for {
